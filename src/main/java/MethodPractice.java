@@ -46,38 +46,83 @@ public class MethodPractice {
     // TODO: Complete this method to return the area of a rectangle
     public static double calculateRectangleArea(double length, double width) {
         // Your code here
-        return 0.0; // placeholder return
+
+        double area = length * width;
+
+        return area; // placeholder return
     }
 
-    // TODO: Create a method to calculate the area of a triangle
-    // public static double calculateTriangleArea(double base, double height) {
-    //    // Your code here
-    // }
+    public static double calculateTriangleArea(double base, double hight) {
+        // Your code here
+
+        double area = 0.5 * base * hight;
+
+        return area; // placeholder return
+    }
 
     // === EXERCISE 2: PARAMETER TYPES ===
     
     // TODO: Complete this method to combine first and last name
     public static String formatFullName(String firstName, String lastName) {
         // Your code here
-        return ""; // placeholder return
+
+        String fullname = firstName + lastName;
+
+        return fullname; // placeholder return
     }
 
     // TODO: Complete this method to return a letter grade based on score
     public static String calculateLetterGrade(int score) {
         // Your code here
-        return ""; // placeholder return
+
+        String i = "";
+
+        if(score <= 100 && score >= 90){
+            i = "A";
+        }
+        else if(score <= 89 && score >= 80){
+            i = "B";
+        }
+        else if(score <= 79 && score >= 70){
+            i = "C";
+        }
+        else if(score <= 69 && score >= 60){
+            i = "D";
+        }
+        else{
+            i = "F";
+        }
+
+        return i; 
     }
 
-    // === EXERCISE 3: PRIMITIVE VS REFERENCE TYPES ===
+     // === EXERCISE 3: PRIMITIVE VS REFERENCE TYPES ===
     
     // TODO: Complete this method that tries to double a primitive value
     public static void tryToDoubleValue(int value) {
         // Your code here
+        value = value * 2;
+        System.out.println("Inside tryToDoubleValue: " + value);
     }
 
     // TODO: Complete this method to double all values in an array
     public static void doubleArrayValues(int[] values) {
-        // Your code here
+
+        for (int i = 0; i < values.length; i++) {
+            values[i] = values[i] * 2;
+        }
+
+        int[] arr = values;
+
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+
     }
 
     // This method tests your implementations
@@ -97,6 +142,7 @@ public class MethodPractice {
         printArray(numbers);
     }
     
+    
     // Helper method to print an array
     public static void printArray(int[] arr) {
         System.out.print("[");
@@ -114,7 +160,8 @@ public class MethodPractice {
     // TODO: Complete this method to calculate the area of a circle
     public static double calculateCircleArea(double radius) {
         // Your code here
-        return 0.0; // placeholder return
+
+        return Math.PI * (radius * 2);
     }
     
     // === EXERCISE 5: CAPTURING RETURN VALUES ===
@@ -122,19 +169,24 @@ public class MethodPractice {
     // TODO: Complete this method to calculate a number raised to a power
     public static double power(double base, int exponent) {
         // Your code here
-        return 0.0; // placeholder return
+        return Math.pow(base, exponent);
     }
     
     // TODO: Complete this method to demonstrate the three ways to capture return values
     public static void testCapturingReturnValues() {
         // 1. Store in a variable
         // Your code here
+        double result = power(2, 3);
+        System.out.println("Stored: " + result);
+
         
         // 2. Use in an expression
         // Your code here
+         System.out.println("expression: " + (power(3, 2) + 10));
         
         // 3. Pass to another method
         // Your code here
+        printResult(power(4, 2));
     }
     
     // Helper method for demonstrating return value capturing
@@ -143,53 +195,65 @@ public class MethodPractice {
     }
     
     // === EXERCISE 6: ALL PATHS MUST RETURN Remove the MultiLine Comments when you get here ===
-    /* 
+    
     // TODO: Fix this method to return the larger of two numbers
     public static int findMax(int a, int b) {
         if (a > b) {
             return a;
+
+        } else { 
+            return b;  
         }
-        // Missing code here - causes a compiler error!
+        
+    }
+
+    public static void printResult(double value) {
+        System.out.println("Result: " + value);
     }
     
     // TODO: Complete this method to return a letter grade, ensuring all paths return a value
     public static String getLetterGrade(int score) {
         if (score >= 90) {
             return "A";
-        }
+        } 
         if (score >= 80) {
             return "B";
-        }
-        // Your code here
-        
-        // Make sure all paths return a value!
+        } 
+        if (score >= 70) {
+            return "C";
+        } 
+        if (score >= 60) {
+            return "D";
+        } 
+        return "F";
+
     }
 
-    */
+    
     
     // === EXERCISE 7: VARIABLE SCOPE ===
     
     // TODO: Complete this method to demonstrate variable scope
     public static void testVariableScope() {
-        // Declare a variable in this scope
-        
-        // Create an if block and declare a variable inside it
-        
-        // Try to print a variable from another scope
-        
-        // Your code here
+        int x = 10;
+
+        System.out.println("x in method scope: " + x);
+
+        if (x > 5) {
+            int y = 20;
+            System.out.println("y inside if block: " + y);
+        }
     }
     
     // TODO: Fix this method that has a scope error
     public static void scopeExample() {
+        int x; 
+    
         if (true) {
-            int x = 10;
+            x = 10;
         }
         
-        // This line has an error because x is not in scope
-        // System.out.println(x);
-        
-        // Your fix here
+        System.out.println(x);
     }
     
     // === EXERCISE 8: PASS BY VALUE ===
@@ -203,7 +267,6 @@ public class MethodPractice {
         swapValues(a, b);
         System.out.println("After attempted swap: a = " + a + ", b = " + b);
         
-        // Test with an array
         int[] arr = {1, 2, 3, 4, 5};
         System.out.print("Before reverse: ");
         printArray(arr);
@@ -214,26 +277,47 @@ public class MethodPractice {
     
     // TODO: Implement this method that attempts to swap two integer values
     public static void swapValues(int a, int b) {
-        // Your code here
+        int temp = a;
+        a = b;
+        b = temp;
+        System.out.println("Inside swapValues: a = " + a + ", b = " + b);
     }
     
     // TODO: Implement this method to reverse the contents of an array
     public static void reverseArray(int[] arr) {
-        // Your code here
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left < right) {
+            int temp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = temp;
+
+            left++;
+            right--;
+        }
     }
     
     // === FINAL EXERCISE ===
     
     // TODO: Implement a method to calculate the average of an array of integers
     public static double calculateAverage(int[] numbers) {
-        // Your code here
-        return 0.0; // placeholder return
+        if (numbers.length == 0) {
+            return 0.0; 
+        }
+
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
+        }
+
+        return (double) sum / numbers.length;
     }
     
     // TODO: Implement a method to remove all vowels from a string
     public static String removeVowels(String input) {
         // Your code here
-        return ""; // placeholder return
+         return input.replaceAll("[aeiouAEIOU]", "");
     }
     
     // This method tests your final exercise implementations
@@ -248,5 +332,5 @@ public class MethodPractice {
         System.out.println("Original: " + original);
         System.out.println("Without vowels: " + noVowels);
     }
-
+   
 }
